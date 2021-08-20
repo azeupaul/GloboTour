@@ -4,9 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/azeup/Labs/Android/GADS/GloboTour/app/src/main/res/drawable/ic_home.xml" value="0.240625" />
-        <entry key="..\:/Users/azeup/Labs/Android/GADS/GloboTour/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/azeup/Labs/Android/GADS/GloboTour/app/src/main/res/layout/activity_main.xml" value="0.16" />
         <entry key="..\:/Users/azeup/Labs/Android/GADS/GloboTour/app/src/main/res/layout/fragment_city_list.xml" value="0.15896739130434784" />
         <entry key="..\:/Users/azeup/Labs/Android/GADS/GloboTour/app/src/main/res/layout/fragment_favorite.xml" value="0.15896739130434784" />
+        <entry key="..\:/Users/azeup/Labs/Android/GADS/GloboTour/app/src/main/res/layout/nav_header.xml" value="0.17980072463768115" />
+        <entry key="..\:/Users/azeup/Labs/Android/GADS/GloboTour/app/src/main/res/menu/activity_main_drawer_items.xml" value="0.22447916666666667" />
       </map>
     </option>
   </component>
