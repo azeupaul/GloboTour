@@ -21,11 +21,13 @@ class CityAdapter(val context: Context, var cityList: ArrayList<City>): Recycler
     override fun onBindViewHolder(cityViewHolder: CityViewHolder, position: Int) {
         val city = cityList[position]
         cityViewHolder.setData(city, position)
+        cityViewHolder.setListeners()
     }
 
     override fun getItemCount(): Int = cityList.size
 
-    inner class CityViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+    inner class CityViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+        View.OnClickListener {
         private var currentPosition: Int = -1
         private var currentCity: City? = null
 
@@ -49,6 +51,38 @@ class CityAdapter(val context: Context, var cityList: ArrayList<City>): Recycler
 
             this.currentCity = city
             this.currentPosition= position
+        }
+
+        fun setListeners() {
+            imvDelete.setOnClickListener(this@CityViewHolder)
+            imvFavorite.setOnClickListener(this@CityViewHolder)
+        }
+
+        override fun onClick(v: View?) {
+            when(v!!.id) {
+                R.id.imv_delete -> deleteItem()
+                R.id.imv_favorite -> toggleFavoriteItem()
+            }
+        }
+
+        private fun toggleFavoriteItem() {
+            currentCity?.isFavorite = !(currentCity?.isFavorite!!)
+
+            if(currentCity?.isFavorite!!){
+                imvFavorite.setImageDrawable(icFavoriteFilledImage)
+                VacationSpots.favoriteCityList.add(currentCity!!)
+            }else{
+                imvFavorite.setImageDrawable(icFavoriteBorderedImage)
+                VacationSpots.favoriteCityList.remove(currentCity!!)
+            }
+        }
+
+        private fun deleteItem() {
+            cityList.removeAt(currentPosition)
+            notifyItemRemoved(currentPosition)
+            notifyItemRangeChanged(currentPosition, cityList.size)
+
+            VacationSpots.favoriteCityList.remove(currentCity!!)
         }
     }
 }
