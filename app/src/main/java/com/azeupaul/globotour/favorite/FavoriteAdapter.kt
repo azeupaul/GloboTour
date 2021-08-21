@@ -9,8 +9,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.azeupaul.globotour.R
 import com.azeupaul.globotour.city.City
+import java.util.ArrayList
 
-class FavoriteAdapter(private val context: Context, private val favoritesList: List<City>): RecyclerView.Adapter<FavoriteAdapter.FavoriteViewHolder>() {
+class FavoriteAdapter(private val context: Context, private val favoritesList: ArrayList<City>): RecyclerView.Adapter<FavoriteAdapter.FavoriteViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteViewHolder {
         val itemView = LayoutInflater.from(context).inflate(R.layout.list_item_favorite, parent, false)
