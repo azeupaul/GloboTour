@@ -8,6 +8,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 
 
@@ -15,8 +16,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var toolbar        : MaterialToolbar
     private lateinit var navController  : NavController
-    private lateinit var navigationView : NavigationView
-    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var bottomNavigationView: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,27 +24,20 @@ class MainActivity : AppCompatActivity() {
 
         // Initialize Views
         toolbar         = findViewById(R.id.activity_main_toolbar)
-        navigationView  = findViewById(R.id.nav_view)
-        drawerLayout    = findViewById(R.id.drawer_layout)
+        bottomNavigationView = findViewById(R.id.bottom_nav_view)
 
         // Get NavHostFragment and NavController
         val navHostFrag = supportFragmentManager.findFragmentById(R.id.nav_host_frag) as NavHostFragment
         navController   = navHostFrag.navController
 
-        // Connect DrawerLayout and navigation component in appBarConfiguration
-        val appBarConfiguration = AppBarConfiguration(navController.graph, drawerLayout)
+        // Define appBarConfiguration
+        val appBarConfiguration = AppBarConfiguration(navController.graph)
 
         // Connect toolbar with navController
         toolbar.setupWithNavController(navController, appBarConfiguration)
 
-        // Connect navigationView with navController
-        navigationView.setupWithNavController(navController)
+        // Connect bottomNavigationView with navController
+        bottomNavigationView.setupWithNavController(navController)
     }
 
-    override fun onBackPressed() {
-        if(drawerLayout.isOpen)
-            drawerLayout.close()
-        else
-            super.onBackPressed()
-    }
 }
