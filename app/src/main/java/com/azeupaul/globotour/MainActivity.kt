@@ -31,7 +31,8 @@ class MainActivity : AppCompatActivity() {
         navController   = navHostFrag.navController
 
         // Define appBarConfiguration
-        val appBarConfiguration = AppBarConfiguration(navController.graph)
+        val topLevelDestinations = setOf(R.id.fragmentCityList, R.id.fragmentFavoriteList)
+        val appBarConfiguration = AppBarConfiguration(topLevelDestinations)
 
         // Connect toolbar with navController
         toolbar.setupWithNavController(navController, appBarConfiguration)
